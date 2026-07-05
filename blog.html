@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Suvro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/url.png" type="image/png">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body class="bg-background text-foreground antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
+
+    <main class="flex-grow max-w-2xl mx-auto w-full px-4 sm:px-6 pt-16 pb-16">
+        <article class="animate-on-scroll">
+            <header class="mb-10">
+                <a href="index.html#writing" class="text-muted text-xs hover:text-foreground transition-colors mb-6 flex items-center gap-1 w-fit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg> Back
+                </a>
+                <h1 id="blog-title" class="text-2xl font-semibold tracking-tight mb-1">Loading...</h1>
+                <p id="blog-date" class="text-muted text-xs"></p>
+            </header>
+            <div id="blog-content" class="prose prose-neutral max-w-none">
+            </div>
+        </article>
+    </main>
+
+    <footer class="w-full px-4 sm:px-6 pb-12 pt-6 border-t border-border/40 animate-on-scroll">
+        <div class="max-w-2xl mx-auto flex flex-col items-start">
+            <div class="text-left text-muted text-xs">
+                <span class="font-medium text-foreground/80">suvro &copy; 2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>

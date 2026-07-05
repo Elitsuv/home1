@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-sans@latest/latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Geist', 'Inter', system-ui, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-on-scroll { transition: none; opacity: 1; transform: translateY(0); }
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 { font-weight: 600; margin-top: 1.5em; margin-bottom: 0.5em; line-height: 1.2; }
+.prose h1 { font-size: 1.5rem; }
+.prose h2 { font-size: 1.25rem; }
+.prose h3 { font-size: 1.125rem; }
+.prose p { margin-bottom: 1em; line-height: 1.6; color: #404040; }
+.prose a { text-decoration: underline; text-underline-offset: 2px; color: #000; }
+.prose ul { list-style-type: disc; padding-left: 1.2em; margin-bottom: 1em; color: #404040; }
+.prose li { margin-bottom: 0.25em; }
+.prose pre { background-color: #fafafa; padding: 1rem; border-radius: 0.25rem; overflow-x: auto; margin-bottom: 1em; font-size: 0.8125rem; border: 1px solid #eaeaea; }
+.prose code { font-family: monospace; font-size: 0.85em; background-color: #fafafa; padding: 0.1em 0.3em; border-radius: 0.25rem; border: 1px solid #eaeaea; }
+.prose pre code { background-color: transparent; padding: 0; border: none; }
