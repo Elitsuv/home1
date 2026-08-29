@@ -29,8 +29,8 @@ body {
 }
 
 ::selection {
-  background: #000;
-  color: #fff;
+  background: #adb5bd;
+  color: #000000;
 }
 
 html {
