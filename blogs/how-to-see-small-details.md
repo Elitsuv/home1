@@ -2,7 +2,8 @@
 title: How to see small details
 date: July 05, 2026
 description: The small details that quietly separate builders from everyone else.
-tags: New
+tags: Thoughts
+banner: assets/blog1.png
 ---
 
 When people look at a finished product, they usually notice the obvious things: the animations, the design, the features, or maybe how fast it feels.
