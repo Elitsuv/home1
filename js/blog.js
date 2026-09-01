@@ -90,7 +90,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="flex-grow">
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4 mb-1">
                 <h3 class="text-foreground font-medium text-sm group-hover:underline underline-offset-4 decoration-1">${blog.title}</h3>
-                <span class="text-muted text-xs whitespace-nowrap">${blog.date}</span>
+                <div class="flex items-center gap-1.5 text-muted text-xs whitespace-nowrap">
+                  <span>${blog.date}</span>
+                  <span class="blog-list-views hidden items-center gap-1" data-id="${blog.id}">
+                    <span>•</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span class="view-num"></span>
+                  </span>
+                </div>
               </div>
               <p class="text-muted text-sm line-clamp-2">${blog.description}</p>
               ${tagsHtml}
@@ -99,6 +106,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
       });
       writingList.innerHTML = html;
+
+      // Load view counts for list items (without incrementing)
+      const listViews = writingList.querySelectorAll('.blog-list-views');
+      listViews.forEach(async (el) => {
+        const blogId = el.getAttribute('data-id');
+        if (!blogId) return;
+        try {
+          const r = await fetch(`https://countapi.mileshilliard.com/api/v1/get/elitsuv_home1_${blogId}`);
+          if (r.ok) {
+            const d = await r.json();
+            if (d && typeof d.value !== 'undefined') {
+              const numSpan = el.querySelector('.view-num');
+              if (numSpan) numSpan.textContent = Number(d.value).toLocaleString();
+              el.classList.remove('hidden');
+              el.classList.add('inline-flex');
+            }
+          }
+        } catch (e) {}
+      });
 
       const elementsToAnimate = writingList.querySelectorAll('.animate-on-scroll');
       if (window.IntersectionObserver) {
@@ -125,6 +151,24 @@ document.addEventListener('DOMContentLoaded', async () => {
       blogContent.innerHTML = '<p class="text-muted">No post specified.</p>';
       return;
     }
+
+    // Increment and fetch view count (+1 on reload across all devices)
+    const blogViewsWrapper = document.getElementById('blog-views-wrapper');
+    const blogViews = document.getElementById('blog-views');
+    try {
+      fetch(`https://countapi.mileshilliard.com/api/v1/hit/elitsuv_home1_${id}`)
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (data && typeof data.value !== 'undefined') {
+            if (blogViews) blogViews.textContent = Number(data.value).toLocaleString();
+            if (blogViewsWrapper) {
+              blogViewsWrapper.classList.remove('hidden');
+              blogViewsWrapper.classList.add('inline-flex');
+            }
+          }
+        })
+        .catch(err => console.warn('Could not load views:', err));
+    } catch (e) {}
 
     try {
       const response = await fetch(`blogs/${id}.md`);
