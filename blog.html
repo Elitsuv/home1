@@ -22,8 +22,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg> Back
                 </a>
                 <h1 id="blog-title" class="text-2xl font-semibold tracking-tight mb-2">Loading...</h1>
-                <div class="flex items-center gap-3 flex-wrap">
-                    <p id="blog-date" class="text-muted text-xs"></p>
+                <div class="flex items-center gap-2.5 flex-wrap text-muted text-xs">
+                    <p id="blog-date"></p>
+                    <span id="blog-views-wrapper" class="hidden items-center gap-1">
+                        <span>•</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <span id="blog-views"></span> views
+                    </span>
                     <div id="blog-tags"></div>
                 </div>
             </header>
