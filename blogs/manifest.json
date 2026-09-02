@@ -1,5 +1,13 @@
 [
   {
+    "id": "cyla-v2",
+    "title": "Can a Python List Learn? Building CYLA",
+    "date": "September 2, 2026",
+    "description": "Building a self-organizing adaptive list with online SGD and Move-to-Front.",
+    "banner": "assets/blog2.png",
+    "tags": "Research"
+  },
+  {
     "id": "how-to-see-small-details",
     "title": "How to see small details",
     "date": "July 05, 2026",
