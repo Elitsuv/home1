@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         text: '#ea580c'
       };
     }
+    if (t.includes('research') || t.includes('ai') || t.includes('ml') || t.includes('algorithm')) {
+      return {
+        bg: 'rgba(99, 102, 241, 0.1)',
+        border: 'rgba(99, 102, 241, 0.3)',
+        text: '#4f46e5'
+      };
+    }
     if (t.includes('engineer') || t.includes('dev') || t.includes('code')) {
       return {
         bg: 'rgba(59, 130, 246, 0.1)',
