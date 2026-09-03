@@ -1,0 +1,17 @@
+{
+  "name": "home1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal developer portfolio & research blog",
+  "scripts": {
+    "build:blogs": "node scripts/build-blogs.js"
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "research",
+    "blog"
+  ],
+  "author": "Suvro (@elitsuv)",
+  "license": "MIT"
+}

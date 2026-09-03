@@ -201,7 +201,10 @@ document.addEventListener('DOMContentLoaded', async () => {
           }
         });
 
-        if (blogTitle && data.title) blogTitle.textContent = data.title;
+        if (data.title) {
+          if (blogTitle) blogTitle.textContent = data.title;
+          document.title = `${data.title} — Suvro (@elitsuv)`;
+        }
         if (blogDate && data.date) blogDate.textContent = data.date;
         if (blogTags && data.tags) blogTags.innerHTML = renderTags(data.tags, true);
       }
