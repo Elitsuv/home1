@@ -12,14 +12,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       return {
         bg: 'rgba(249, 115, 22, 0.1)',
         border: 'rgba(249, 115, 22, 0.3)',
-        text: '#ea580c'
+        text: '#ea580c',
+        isThought: true
       };
     }
     if (t.includes('research') || t.includes('ai') || t.includes('ml') || t.includes('algorithm')) {
       return {
         bg: 'rgba(99, 102, 241, 0.1)',
         border: 'rgba(99, 102, 241, 0.3)',
-        text: '#4f46e5'
+        text: '#4f46e5',
+        isResearch: true
       };
     }
     if (t.includes('engineer') || t.includes('dev') || t.includes('code')) {
@@ -58,8 +60,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="flex flex-wrap gap-1.5 ${isHeader ? '' : 'mt-2'}">
         ${tagList.map(tag => {
           const style = getTagStyles(tag);
+          const researchClass = style.isResearch ? 'tag-research' : '';
+          const thoughtClass = style.isThought ? 'tag-thought' : '';
           return `
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium tracking-tight"
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium tracking-tight ${researchClass} ${thoughtClass}"
                   style="background-color: ${style.bg}; border: 1px solid ${style.border}; color: ${style.text};">
               ${tag}
             </span>

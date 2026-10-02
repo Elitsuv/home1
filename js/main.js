@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
   elementsToAnimate.forEach(el => observer.observe(el));
 
-  const toggleAvatarBtn = document.getElementById('toggle-avatar');
   const profileAvatar = document.getElementById('profile-avatar');
 
   function playRoughRadioSound() {
@@ -101,35 +100,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (profileAvatar && typeof site !== 'undefined') {
     let currentAvatar = 1;
-    let rotationAngle = 0;
 
-    const switchAvatar = () => {
-      playRoughRadioSound();
-
-      // Cumulative rotation: spins 360deg forward every single time you click infinitely
-      if (toggleAvatarBtn) {
-        const svgIcon = toggleAvatarBtn.querySelector('svg');
-        if (svgIcon) {
-          rotationAngle += 360;
-          svgIcon.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-          svgIcon.style.transform = `rotate(${rotationAngle}deg)`;
-        }
+    const switchAvatar = (playSound = false) => {
+      if (playSound) {
+        playRoughRadioSound();
       }
 
-      profileAvatar.style.opacity = 0;
+      profileAvatar.style.opacity = '0';
       setTimeout(() => {
         currentAvatar = currentAvatar === 1 ? 2 : 1;
         profileAvatar.src = currentAvatar === 1 ? site.assets.avatar1 : site.assets.avatar2;
-        profileAvatar.style.opacity = 1;
-      }, 150);
+        profileAvatar.style.opacity = '1';
+      }, 200);
     };
 
-    if (toggleAvatarBtn) {
-      toggleAvatarBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        switchAvatar();
-      });
-    }
-    profileAvatar.addEventListener('click', switchAvatar);
+    // Automatic 5-second image changer
+    setInterval(() => {
+      switchAvatar(false);
+    }, 5000);
+
+    // Optional manual click to flip immediately
+    profileAvatar.addEventListener('click', () => switchAvatar(true));
   }
 });
