@@ -675,4 +675,170 @@ html {
 .github-activity-tooltip.is-visible {
   opacity: 1;
   transform: translate(-50%, calc(-100% - 8px)) scale(1);
+}
+
+.ascii-art-card {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0b0a16;
+  border: 1px solid rgba(229, 229, 229, 0.85);
+  border-top-color: #ffffff;
+  border-left-color: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+  border-right-color: rgba(0, 0, 0, 0.05);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+    0 4px 20px -2px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  transition: box-shadow 0.25s ease;
+}
+
+.ascii-art-card:hover {
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    0 8px 28px -4px rgba(0, 0, 0, 0.1);
+}
+
+.ascii-art-card ascii-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ascii-art-card ascii-art canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.ascii-art-footer-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+}
+
+.ascii-art-copyright {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 0.85);
+}
+
+.ascii-art-quote {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.80);
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 0.85);
+}
+
+.nav-stroke-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5.5px;
+  padding: 3px 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: #71717a;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(229, 229, 229, 0.75);
+  border-top-color: #ffffff;
+  border-left-color: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+  border-right-color: rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  border-radius: 7px;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+  cursor: pointer;
+  line-height: 1.4;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.nav-stroke-item:hover {
+  color: #09090b;
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(212, 212, 216, 0.9);
+  border-top-color: #ffffff;
+  border-left-color: #ffffff;
+  transform: none;
+}
+
+.notes-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.notes-tooltip-alert {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%) translateY(2px);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #3f3f46;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(229, 229, 229, 0.9);
+  border-top-color: #ffffff;
+  border-left-color: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+  border-right-color: rgba(0, 0, 0, 0.05);
+  box-shadow:
+    inset 0 1px 0 0 #ffffff,
+    0 2px 8px -2px rgba(0, 0, 0, 0.06);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 40;
+  user-select: none;
+}
+
+.notes-tooltip-alert::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 4px 0 4px;
+  border-style: solid;
+  border-color: rgba(229, 229, 229, 0.9) transparent transparent transparent;
+}
+
+.notes-tooltip-wrapper:hover .notes-tooltip-alert {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
