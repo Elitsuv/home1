@@ -213,6 +213,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (blogTags && data.tags) blogTags.innerHTML = renderTags(data.tags, true);
       }
 
+      const plainText = content.replace(/```[\s\S]*?```/g, '').replace(/[#*`_~\[\]()>-]/g, ' ');
+      const words = plainText.trim().split(/\s+/).filter(Boolean).length;
+      const readMinutes = Math.max(1, Math.ceil(words / 200));
+      const blogReadTime = document.getElementById('blog-read-time');
+      const blogReadTimeWrapper = document.getElementById('blog-read-time-wrapper');
+      if (blogReadTime && blogReadTimeWrapper) {
+        blogReadTime.textContent = `${readMinutes} min read`;
+        blogReadTimeWrapper.classList.remove('hidden');
+        blogReadTimeWrapper.classList.add('inline-flex');
+      }
+
       if (window.marked && window.hljs) {
         marked.setOptions({
           highlight: function(code, lang) {
